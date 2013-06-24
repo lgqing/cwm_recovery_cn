@@ -434,7 +434,7 @@ static void *progress_thread(void *cookie)
 }
 
 //kanged this vibrate stuff from teamwin (thanks guys!)
-#define VIBRATOR_TIME_MS        20
+//#define VIBRATOR_TIME_MS        10
 
 static int rel_sum = 0;
 static int in_touch = 0; //1 = in a touch
@@ -522,17 +522,26 @@ static int input_callback(int fd, short revents, void *data)
 				if (s_tracking_id != -1) break;
 				//finger lifted! lets run with this
 				if (touch_y >= (gr_fb_height() - gr_get_height(surface)) && touch_x > 0) {
+					fake_key = 1;
 					ev.type = EV_KEY;
 					ev.code=input_buttons();
+					ev.value = 1;
+					rel_sum = 0;
 					vibrate(VIBRATOR_TIME_MS);
 				} else {
 					if(slide_right == 1) {
+						fake_key = 1;
 						ev.type = EV_KEY;
 						ev.code = KEY_POWER;
+						ev.value = 1;
+						rel_sum = 0;
 						slide_right = 0;
 					} else if(slide_left == 1) {
+						fake_key = 1;
 						ev.type = EV_KEY;
 						ev.code = KEY_BACK;
+						ev.value = 1;
+						rel_sum = 0;
 						slide_left = 0;
 					}
 				}
@@ -567,12 +576,18 @@ static int input_callback(int fd, short revents, void *data)
 				if(touch_y < (gr_fb_height() - gr_get_height(surface))) {
 					int diff_h=(gr_fb_height() - gr_get_height(surface))/20;
 					if (diff_y > diff_h) {
+						fake_key = 1;
 						ev.type = EV_KEY;
-						ev.code = KEY_VOLUMEDOWN;	            
+						ev.code = KEY_VOLUMEDOWN;
+						ev.value = 1;
+						rel_sum = 0;	            
 						reset_gestures();
 					} else if (diff_y < (diff_h*-1)) {
+						fake_key = 1;
 						ev.type = EV_KEY;
 						ev.code = KEY_VOLUMEUP;
+						ev.value = 1;
+						rel_sum = 0;
 						reset_gestures();
 					}
 				} else input_buttons();

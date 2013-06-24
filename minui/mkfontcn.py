@@ -41,9 +41,9 @@ else:
 	fontsize_en = int(raw_input())
 
 fontsize_cn = fontsize_en
-font_en = ImageFont.truetype('fonts/Droid Sans Mono.ttf', fontsize_en)
+font_en = ImageFont.truetype('fonts/Deja Vu Sans Mono.ttf', fontsize_en)
 width_en,height_en = font_en.getsize("W")
-font_cn = ImageFont.truetype('fonts/msyh.ttf', fontsize_cn)
+font_cn = ImageFont.truetype('fonts/wqy-microhei.ttc', fontsize_cn)
 width_cn,height_cn = font_cn.getsize("W")
 print "fontsize: %d" %(fontsize_en)
 print "font en: %dx%d" %(width_en,height_en)
@@ -59,8 +59,8 @@ for i in range(len(s)):
 #im_en = im_en.convert('RGB')
 #im_en = im_en.filter(ImageFilter.SMOOTH)
 #im_en = im_en.convert('P')
-im_en.save("data_en_%d_%dx%d.png"%(fontsize_en,width_en,height_en))
-print "generating png file data_en_%d_%dx%d.png"%(fontsize_en,width_en,height_en)
+im_en.save("data_en_%dx%d.png"%(width_en,height_en))
+print "generating png file data_en_%dx%d.png" %(width_en,height_en)
 #print "painting GB2312"
 im_cn = Image.new('P', (width_cn, height_cn*count), 0)
 text = ImageDraw.Draw(im_cn)

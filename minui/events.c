@@ -47,7 +47,6 @@ static unsigned ev_dev_count = 0;
 static unsigned ev_misc_count = 0;
 
 #define VIBRATOR_TIMEOUT_FILE	"/sys/class/timed_output/vibrator/enable"
-#define VIBRATOR_TIME_MS	50
 
 int vibrate(int timeout_ms) {
     char str[20];

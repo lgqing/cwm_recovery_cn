@@ -854,9 +854,9 @@ main(int argc, char **argv) {
 
     device_ui_init(&ui_parameters);
     ui_init();
-    ui_print(EXPAND(RECOVERY_VERSION)"\n");
+    ui_print(EXPAND(RECOVERY_VERSION));
+	ui_print("("EXPAND(RECOVERY_BUILD_DATE)")\n");
 	//ui_print("Compiled by Xiaolu("EXPAND(RECOVERY_BUILD_DATE)")\n");
-	ui_print("Build date: "EXPAND(RECOVERY_BUILD_DATE)"\n");
 	__system("/sbin/postrecoveryboot.sh");
     load_volume_table();
     process_volumes();
