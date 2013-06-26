@@ -3,6 +3,7 @@
 from struct import *
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
 import sys, os, pygame, StringIO
+#使用pygame的font.render开启抗锯齿
 
 print "preparing data"
 s = ''

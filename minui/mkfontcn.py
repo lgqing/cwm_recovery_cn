@@ -114,9 +114,9 @@ for y in range(height):
 pixels.append(run_count | run_val)
 pixels.append(0)
 
-print "generating header files fontcn_%dx%d.h" %(width_en,height_cn)
+print "generating header files fontcn%d_%dx%d.h" %(fontsize_en,width_en,height_cn)
 # gen font data
-f = open('fontcn_%dx%d.h'%(width_en,height_cn), 'wb')
+f = open('fontcn%d_%dx%d.h'%(fontsize_en,width_en,height_cn), 'wb')
 f.write("struct {\n")
 f.write("\tunsigned count;\n")
 f.write("\tunsigned ewidth;\n")
